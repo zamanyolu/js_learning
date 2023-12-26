@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function cerez_olustur(){
+            var cerezadi =document.getElementById("ad").value;
+            var cdegeri = document.getElementById("deger").value;
+            var gun = document.getElementById("gun").value;
+            var bugun = new Date();
+            bugun.setDate(bugun.getDate() + gun);
+            document.cookie = cerezadi + "=" + escape(cdegeri) +
+                ";expires=" + bugun.toGMTString()
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="ad"/>:Çerez Adı<br/>
+<input type="text" id="deger"/>:Çerezde saklanacak veri<br/>
+<input type="text" id="gun"/>:Kaç gün saklanacak<br/>
+<input type="button" value="Çerez Oluştur" onclick="cerez_olustur()"/>
+
+
+
+</body>
+</html>

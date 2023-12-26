@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Olay Akışı</title>
+  <script type="text/javascript">
+      function fun() {
+          document.body.addEventListener("click", fun1,true);
+          // document.body.addEventListener("click", fun1, false);
+
+          document.getElementById('ust').addEventListener("click", fun2, true);
+          // document.getElementById('ust').addEventListener("click", fun2, false);
+
+          document.getElementById('alt').addEventListener("click", fun3);
+      }
+
+      function fun1() {
+          console.log("<body> elemanı click olayı");
+      }
+      function fun2() {
+          console.log("<div id='ust'> elemanı click olayı");
+      }
+      function fun3() {
+          console.log("<div id='alt'> elemanı click olayı");
+      }
+
+  </script>
+</head>
+<body onload="fun();">
+<div id="ust">
+  <div id="alt">Alt div</div>
+</div>
+</body>
+</html>

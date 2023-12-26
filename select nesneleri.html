@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    function begin() {
+      console.log(document.getElementById('k').defaultSelected);
+      console.log(document.getElementById('m').defaultSelected);
+      console.log(document.getElementById('b').defaultSelected);
+      console.log(document.getElementById('mo').defaultSelected);
+      document.getElementById('mo').selected=true;
+    }
+  </script>
+</head>
+<body onload="begin();">
+<form>
+  <select id="renkler" multiple="true" >
+    <optgroup label="renk">
+    <option id="k" selected="selected" >Kırmızı</option>
+    <option id="m" >Mavi</option>
+    <option id="b" >Beyaz</option>
+    <option id="mo" >Mor</option>
+    </optgroup>
+    <optgroup label="sayi">
+      <option id="a" selected="selected" >Kırmızı</option>
+      <option id="b" >Mavi</option>
+      <option id="c" >Beyaz</option>
+      <option id="d" >Mor</option>
+    </optgroup>
+  </select>
+</form>
+
+</body>
+</html>

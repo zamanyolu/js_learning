@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    function fun(){
+      document.getElementById('ust').addEventListener("click", fun2, true);
+    }
+
+    function fun2(event){
+      console.log("Olay akışı evresi: " + event.eventPhase);
+      console.log("event nesnesinin yakaladığı eleman: <div id='" +
+              event.currentTarget.id + "'>");
+      console.log("Olayı gerçekleştiren hedef eleman: <div id='" +
+              event.target.id + "'>");
+    }
+  </script>
+</head>
+<body onload="fun();">
+<div id="ust">
+  <div id="alt">Alt div</div>
+</div>
+</body>
+</html>

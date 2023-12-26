@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Klavye ve Mouse Olayları</title>
+    <script type="text/javascript">
+        var lastDownTarget, tahta;
+
+        function fun(event) {
+            tahta = document.getElementById('tahta');
+            tahta.addEventListener("mousemove", olay, false);
+            tahta.addEventListener("keydown", olay, false);
+            tahta.addEventListener("click", olay, false);
+        }
+
+        function olay(event) {
+            const k = document.getElementById('keyboard');
+            const m = document.getElementById('mouse');
+            lastDownTarget = event.target;
+
+            console.log(lastDownTarget === event.currentTarget);
+
+            switch(event.type){
+                case 'keydown':
+                    k.text = event.type;
+                    break;
+
+                case 'click':
+                case "mousemove":
+
+                    m.textContent = event.clientX + "," + event.clientY;
+                    k.textContent = event.type;
+
+                    break;
+
+            }
+        }
+    </script>
+</head>
+<body onload="fun();">
+<div id="ust">
+    <div id="fare">Alt div</div>
+    <p>Mouse olayları</p>
+    <span id="mouse"></span>
+    <div id="klavye">Alt div</div>
+    <p>Mouse olayları</p>
+    <span id="keyboard"></span>
+    </br>
+    <canvas id="tahta" tabindex="1" style="width: 150px; height: 150px; border: solid;"></canvas>
+</div>
+</body >
+</html>

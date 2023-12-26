@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var _load = function () {
+            var formEl = document.querySelector("form[name='form1']");
+            Array.prototype.forEach.call(formEl.elements,
+                (e) => {console.log(e);}
+            );
+            // formEl.elements.forEach(function(e) =>{console.log(e);})
+        }
+
+        function change(e){
+            elSayi = document.getElementsByName("sayi")[0];
+            elSlider = document.getElementsByName("slider")[0];
+            elSayi.value=elSlider.value;
+            console.log(elSlider.value);
+        }
+    </script>
+</head>
+<body onload="_load();">
+<div>
+    <form action="" name="form1">
+        <span>Kullanıcı Adı</span>
+        <label for="isim">Kullanıcı Şifresi</label>
+        <input id="isim" type="text" id="username" name="username"
+               autocomplete="username" placeholder="Deneme" required/>
+        <span>Parola</span>
+        <input id="sifre" name="sifre" type="password" value="bir parola"
+               autocomplete="current-password"/>
+
+    </form>
+        <fieldset resizeable>
+            <legend>Ship the blue gift to...</legend>
+            <p><label> Address: <textarea name=ba autocomplete="section-blue shipping street-address"></textarea>
+            </label>
+            <p><label> City: <input name=bc autocomplete="section-blue shipping address-level2"> </label>
+            <p><label> Postal Code: <input name=bp autocomplete="section-blue shipping postal-code"> </label>
+        </fieldset>
+        <fieldset>
+            <legend>Ship the red gift to...</legend>
+            <p><label> Address: <textarea name=ra autocomplete="section-red shipping street-address"></textarea>
+            </label>
+            <p><label> City: <input name=rc autocomplete="section-red shipping address-level2"> </label>
+            <p><label> Postal Code: <input name=rp autocomplete="section-red shipping postal-code"> </label>
+        </fieldset>
+
+    <input type="number" name="sayi" min="0" max="100" step=".5" value="50"/>
+    <input type="range" name="slider" min="0" max="100" step="1" value="50" oninput="change();"/>
+    <input type="color" />
+
+</div>
+</body>
+</html>

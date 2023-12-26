@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renk Seçici</title>
+  <style type="text/css">
+    form{
+      width: 400px;
+      position:relative;
+    }
+
+    form tr td:nth-of-type(1){
+      width: 150px;
+      color:crimson;
+      font-family: "Gill Sans MT Condensed";
+      font-size: 20px;
+    }
+
+    div#renk{
+      width:100px;
+      height:118px;
+      position:absolute;
+      left : 400px;
+      /*right:100px;*/
+      top:10px;
+      /*border: black solid 1px;*/
+      border-radius: 10px;
+    }
+
+    p#result{
+      font-family: consolas;
+      font-size: 15px;
+      color: #11b0ee;
+      font-weight: bold;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var ch = function(){
+      var hsl = document.querySelector("input[name='hue']");
+      var saturation = document.querySelector("input[name='saturation']");
+      var light = document.querySelector("input[name='light']");
+
+      var target = document.getElementById('renk');
+      var colorStr = "hsl(" + hsl.value + "," + saturation.value + "%," + light.value + "%)";
+
+      target.style.backgroundColor= colorStr;
+      console.log("renk:" + colorStr)
+      var sonucYaz = document.getElementById('result');
+      sonucYaz.innerHTML = colorStr;
+
+      var style = document.defaultView.getComputedStyle(target, null);
+      sonucYaz.innerHTML += ", hex:" + style.getPropertyValue("background-color");
+    }
+  </script>
+</head>
+<body>
+
+<form action="" name="form1" >
+  <fieldset>
+    <legend>Renk Seçici</legend>
+    <table>
+      <tr>
+        <td>Hue (renk)</td>
+        <td>
+          <input type="range" name="hue" min="0" max="360"
+                 step="1" oninput="ch();"/>360<sup>0</sup>
+        </td>
+      </tr>
+      <tr>
+        <td>Saturation (Doygunluk)</td>
+        <td>
+          <input type="range" name="saturation" min="0" max="100"
+                 step="1" oninput="ch();">100%
+        </td>
+      </tr>
+      <tr>
+        <td>lightness (Aydınlık)</td>
+        <td>
+          <input type="range" name="light" min="0" max="100"
+                 step="1" oninput="ch();"/>100%
+        </td>
+      </tr>
+    </table>
+    <p id="result"></p>
+  </fieldset>
+  <div id="renk"></div>
+  <div>
+    <input type="date"/>
+  </div>
+  <div>
+    <input type="datetime"/>
+  </div>
+  <div>
+    <input type="date"/>
+  </div>
+    <div>
+    <input type="datetime-local"/>
+  </div>
+  <div>
+    <input type="time"/>
+  </div>
+  <div>
+    <input type="week"/>
+  </div>
+
+</form>
+</body>
+</html>

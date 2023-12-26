@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span {
+            border-bottom: 1px solid;
+            /*border-left: 1px solid;*/
+            height: 1.5rem;
+            width: 2rem;
+            display: inline-block;
+            margin-bottom: 0.3rem;
+            /*margin-left: 1rem;*/
+
+        }
+
+        li{
+            list-style-type: none;
+            border-left:1px solid;
+            margin-left: .5em;
+            padding-bottom: .3em;
+
+            /*display: block;*/
+            /*list-style-type: none;*/
+            /*position: relative;*/
+            /*margin: 2px;*/
+            /*padding: 0.5em 0.5em 0.5em 2em;*/
+            /*background: #ccff99;*/
+            /*border-left:1px solid;*/
+
+        }
+        /*li::before {*/
+        /*    content: "";*/
+        /*    position: absolute;*/
+        /*    border-color: #009933;*/
+        /*    border-style: solid;*/
+        /*    border-width: 0 0.3em 0.25em 0;*/
+        /*    height: 1em;*/
+        /*    top: 1.3em;*/
+        /*    left: 0.6em;*/
+        /*    margin-top: -1em;*/
+        /*    !*transform: rotate(45deg);*!*/
+        /*    width: 0.5em;*/
+        /*}*/
+        /*ul{*/
+        /*    display: block;*/
+        /*    border-bottom: 1px solid;*/
+        /*    !*margin-left: 2.5em;*!*/
+        /*    list-style-image: url("images/open_folder.jpg");*/
+
+        /*}*/
+
+    </style>
+</head>
+<body>
+<ul>
+    <li><span></span>root
+        <ul>
+            <li><span></span>folder one
+                <ul>
+                    <li><span></span>file_one.txt</li>
+                    <li><span></span>file_two.txt</li>
+                </ul>
+            </li>
+            <li><span></span><i class="fa-regular fa-folder-open"></i>folder two
+                <ul>
+                    <li><span></span>file_one.txt</li>
+                    <li><span></span>file_two.txt</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
