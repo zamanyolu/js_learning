@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    function loadScript(src, callback) {
+        // console.log('source : ', src);
+      let script = document.createElement('script');
+      script.src  =src;
+      script.onload = () => callback(script);
+      console.log("onload bitti")
+      document.head.appendChild(script, null);
+    }
+
+    function run() {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+      alert(`Cool, the script ${script.src} is loaded`);
+      alert( _ ); // _ is a function declared in the loaded script
+    });
+
+    loadScript("js/1.js", ()=>{bir();});
+    loadScript("js/2.js", ()=>{iki();}); // bu, sonrakinden sonra çalıştırılıyor
+    loadScript("js/2.js", a=> console.log(a.src));
+    }
+  </script>
+</head>
+<body onload="run();">
+<input type="button" onclick="bir();">
+</body>
+</html>
