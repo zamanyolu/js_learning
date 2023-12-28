@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+      // Alleviate Doom Pyramid. Separate each callback as following:
+    function loadScript(src, callback) {
+        // console.log('source : ', src);
+      let script = document.createElement('script');
+      script.src  =src;
+      script.onload = () => callback(null, script);
+      script.onerror = () => callback(new Error(`Script load error for ${src}`));
+      console.log("onload finished")
+      document.head.appendChild(script);
+    }
+
+    function run() {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', step1);
+
+    function step1(error,script) {
+        if (error) handleError(error);
+        else {
+            alert(`Cool, the script ${script.src} is loaded`);
+            alert( _ ); // _ is a function declared in the loaded script
+            loadScript('js/1.js', step2);
+        }
+    }
+
+    function step2(error,script) {
+        if (error) handleError(error);
+        else {
+            bir();
+            loadScript("js/2.js", step3)
+        }
+    }
+    function step3(error,script) {
+        if (error) handleError(error);
+        else {
+            iki();
+            // loadScript(null, null)
+        }
+    }
+
+    function handleError(error) {
+
+    }
+    // loadScript("js/2.js", ()=>{iki();}); // bu, sonrakinden sonra çalıştırılıyor
+    // loadScript("js/2.js", (a,b)=>{iki();}); // bu, sonrakinden sonra çalıştırılıyor
+    // loadScript("js/2.js", (a,b)=> console.log(b.src));
+    }
+  </script>
+</head>
+<body onload="run();">
+<input type="button" onclick="bir();">
+</body>
+</html>
