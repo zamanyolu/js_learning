@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    let promise = new Promise(function (resolve, reject) {
+      // function executed automatically when the promise is constructed
+
+      // after a second, signal that job is done with result "done"
+      setTimeout(() => resolve("done"), 1000);
+      setTimeout(()=>reject(new Error('Whoops!')), 1000);
+
+    });
+    new Promise((resolve, reject) => {
+      /* do something that takes time, and then call resolve or maybe reject */
+    })
+    //
+    // promise.then(result=> alert(result),
+    //             error=>alert(error)
+    // );
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve("value"), 2000);
+    })
+            .then(result => alert(result)) // <-- .then shows "value"
+            .finally(() => alert("Promise ready")); // triggers first
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

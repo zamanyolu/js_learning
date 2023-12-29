@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+  <script >
+      function go() {
+      new Promise(function (resolve, reject) {
+          setTimeout(() => resolve, 1000);
+      }).then(function (result) {
+          alert(result);
+
+          return new Promise((resolve, reject) => {
+              setTimeout(() => resolve(result * 2), 1000);
+          });
+      }).then(function (result) {
+          alert(result);
+
+          return new Promise((resolve, reject) => {
+              setTimeout(() => resolve(result * 2), 1000);
+          });
+      }).then(function (result) {
+          alert(result);
+      });
+
+      }
+
+  </script>
+</head>
+<body onload="go();">
+<button onclick="go();">Click me</button>
+
+</body>
+</html>
