@@ -13,7 +13,7 @@
       margin: 0px;
       list-style: none;
       padding-left:20px;
-      display:none;
+      visibility: hidden;
     }
 
     .menu .title::before {
@@ -27,26 +27,22 @@
     }
 
     .menu.open ul {
-      display: block;
+      visibility: visible;
     }
 
 
   </style>
   <script type="text/javascript">
-    console.log('safsdf');
     window.addEventListener('DOMContentLoaded', run);
 
     function run() {
       function tikla(event) {
-        if (div.classList.has('open')) {
-          div.ClassList = "menu";
-        }
-        div.ClassList = "menu open";
+        var el = document.querySelector('.menu');
+        if (el.classList.contains('open')) el.classList.remove("open");
+        else el.classList.add("open");
       }
 
       const el = document.querySelector('.menu');
-      // var div = document.getElementsByClassName('menu')[0];
-      console.log(el);
       el.addEventListener("click", tikla);
     }
 

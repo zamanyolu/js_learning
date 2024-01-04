@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        document.body.myData = {
+            name: 'Caesar',
+            title: 'Imperator'
+        };
+
+        alert(document.body.myData.title); // Imperator
+    </script>
+
+    <style>
+        /* styles rely on the custom attribute "order-state" */
+        .notification {
+            position: fixed;
+            display: block;
+            vertical-align: middle;
+            horiz-align: center;
+            top: 10px;
+            right: 10px;
+            border: solid 2px;
+            width: 140px;
+            height: 45px;
+        }
+
+        [hidden]{
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+<body id="test" something="non-standard">
+
+
+
+<div class="notification" hidden><span>Merhaba</span></div>
+<script>
+    function showNotification() {
+        div = document.querySelector('.notification');
+        if (div.hasAttribute("hidden"))
+        {
+            div.removeAttribute("hidden");
+        }else div.setAttribute("hidden", "");
+
+    }
+    setInterval(showNotification, 1000);
+
+</script>
+
+
+</body>
+
+
+</html>
