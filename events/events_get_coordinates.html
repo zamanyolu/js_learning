@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="Tıkla" id="elem"/>
+
+
+<button id="elem2">Click me</button>
+
+
+<script type="text/javascript">
+  // elem.addEventListener('click', function(event){
+  //   alert(event.type + " at " + event.currentTarget + "\n" +
+  //           "Coordinates: " + event.clientX + "," + event.clientY);
+  //
+  // });
+
+  let obj = {
+    handleEvent(event) {
+      alert(event.type + " at " + event.currentTarget);
+    }
+  };
+
+  elem2.addEventListener("click", obj);
+
+  class Menu{
+    handleEvent(event){
+      switch (event.type) {
+        case 'mousedown':
+          elem2.innerHTML = "Mouse button pressed";
+          break;
+        case "mouseup":
+          elem2.innerHTML+="... and released";
+          break;
+      }
+    }
+  }
+  let menu = new Menu();
+  // elem2.addEventListener('mousedown', menu);
+  // elem2.addEventListener('mouseup', menu);
+
+  class Menu2 {
+    handleEvent(event) {
+      // mousedown -> onMousedown
+      let method = 'on' + event.type[0].toUpperCase() + event.type.slice(1);
+      this[method](event);
+    }
+
+    onMousedown(event) {
+      console.log('mMouse down');
+      elem2.innerHTML = "Mouse button pressed";
+    }
+
+    onMouseup(event) {
+      elem2.innerHTML += "...and released.";
+    }
+  }
+
+  let menu2 = new Menu2();
+  elem2.addEventListener('mousedown', menu2);
+  elem2.addEventListener('mouseup', menu2);
+
+</script>
+
+</body>
+</html>
