@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #field {
+            width: 200px;
+            height: 150px;
+            border: 5px solid black;
+            background-color: #00FF00;
+            overflow: hidden;
+            position:relative;
+            top:20px;
+            box-sizing : border-box;
+            border-radius: 24px;
+        }
+
+        #ball{
+            position: absolute;
+            left:0;
+            top:0;
+            transition: 1s all;
+        }
+        #writer{
+            margin-block-start: 50px;
+        }
+
+    </style>
+</head>
+
+<body >
+
+
+<div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball">
+</div>
+<div>
+    <p class="writer" id="writer"></p>
+</div>
+
+    <script>
+        // let fieldCoords;
+        field.addEventListener('click', move);
+        field.addEventListener('click', write);
+
+        function move(event) {
+
+            fieldCoords = this.getBoundingClientRect();
+
+            let ballCoords = {
+                left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2 ,
+                top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2
+            };
+
+            // prevent crossing the top field boundary
+            if (ballCoords.left < 0) ballCoords.left = 0;
+
+            // prevent crossing the left field boundary
+            if (ballCoords.top < 0) ballCoords.top = 0;
+
+            if(ballCoords.left + ball.clientWidth > field.clientWidth)
+                ballCoords.left = field.clientWidth - ball.clientWidth;
+
+            if(ballCoords.top + ball.clientHeight > field.clientHeight)
+                ballCoords.top = field.clientHeight - ball.clientHeight;
+
+            ball.style.left = ballCoords.left + "px";
+            ball.style.top = ballCoords.top + "px";
+
+        }
+
+        function write(event) {
+
+            fieldCoords = this.getBoundingClientRect();
+            ballCoords = ball.getBoundingClientRect();
+
+            writer.innerHTML="";
+
+            writer.innerHTML += "event.clientX: " + event.clientX + "</br>";
+            writer.innerHTML += "event.clientY: " + event.clientY + "</br>";
+            writer.innerHTML += "</br>"
+
+            writer.innerHTML += "ball.offsetLeft: " + ball.offsetLeft +"</br>";
+            writer.innerHTML += "ball.offsetTop: " + ball.offsetTop + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "ball.offsetWidth: " + ball.offsetWidth +"</br>";
+            writer.innerHTML += "ball.offsetHeight: " + ball.offsetHeight + "</br>";
+            writer.innerHTML += "</br>";
+            
+            writer.innerHTML += "ball.scrollWidth: " + ball.scrollWidth +"</br>";
+            writer.innerHTML += "ball.scrollHeight: " + ball.scrollHeight + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "ball.left: " + ballCoords.left +"</br>";
+            writer.innerHTML += "ball.top: " + ballCoords.top + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "field.scrollWidth: " + field.scrollWidth +"</br>";
+            writer.innerHTML += "field.scrollHeight: " + field.scrollHeight + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "field.offsetWidth: " + field.offsetWidth +"</br>";
+            writer.innerHTML += "field.offsetHeight: " + field.offsetHeight + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "fieldCoords.left: " + fieldCoords.left + "</br>";
+            writer.innerHTML += "fieldCoords.top: " + fieldCoords.top + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "field.clientLeft: " + field.clientLeft + "</br>";
+            writer.innerHTML += "field.clientTop: " + field.clientTop + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "field.offsetLeft: " + field.offsetLeft + "</br>";
+            writer.innerHTML += "field.offsetTop: " + field.offsetTop + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "field.style.width: " + field.clientWidth + "</br>";
+            writer.innerHTML += "field.clientHeight: " + field.clientHeight + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "ball.clientWidth: " + ball.clientWidth +"</br>";
+            writer.innerHTML += "ball.clientHeight: " + ball.clientHeight + "</br>";
+            writer.innerHTML += "</br>";
+
+            writer.innerHTML += "window.scrollX: " + window.scrollX +"</br>";
+            writer.innerHTML += "window.scrollY: " + window.scrollY + "</br>";
+            writer.innerHTML += "</br>";
+
+
+
+
+
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

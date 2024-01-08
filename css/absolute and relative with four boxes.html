@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main {
+            /*justify-content: center;*/
+            /*align-items: center;*/
+
+        }
+
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #efa;
+            display: block;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: #afa;
+            display: block;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: #fad;
+            display: block;
+        }
+
+        .box4 {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            background-color: #abe;
+        }
+
+
+        .box1, .box2, .box3, .box4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box5 {
+            width: 50px;
+            height: 50px;
+            display: block;
+            background-color: #aef;
+            position: relative;
+            top:20px;
+            left:20px;
+        }
+
+        .box2 {
+            position: absolute;
+        }
+        .box3 {
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="main">
+
+    <div class="box1">
+
+        <div class="box2">
+
+            <div class="box3">
+
+                <div class="box4">
+
+                    <div class="box5">
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
