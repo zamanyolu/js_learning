@@ -7,43 +7,42 @@
 
 
         div.main {
-            width: 400px;
-            height: 300px;
-            margin: 5px;
+            width: 500px;
+            /*margin: 5px;*/
             position: absolute;
-            /*vertical-align: center;*/
-            /*align-content: center;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*place-content: center;*/
         }
 
         div.carousel-window {
-            position: absolute;
-            height: 280px;
-            width: 250px;
+            position: relative;
+            width: 390px;
             overflow: hidden;
+            /*margin:5px;*/
+            padding:2px;
+            display:grid;
         }
 
         .arrow {
             border-radius: 50%;
-            width:25px;
-            height: 25px;
-            /*vertical-align: middle;*/
-            position: absolute;
-            /*height: 100%;*/
-            display: block;
-            /*float:left;*/
-            /*text-align: center;*/
-            /*margin: auto;*/
-            /*top:50%;*/
+            position: relative;
+            /*display: flex;*/
+            align-self: center;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
 
         ul {
             display: flex;
-            width: 900px;
-            overflow: hidden;
+            width: 9999px;
+            /*margin-block-start: 0px;*/
+            position: relative;
+            padding-left:0px;
+            block-size: border-box;
             float: left;
-            /*height: 100%;*/
-            vertical-align: middle;
         }
 
         /*.vertical-align {*/
@@ -99,8 +98,13 @@
         </ul>
     </div>
     <button class="arrow right">&#8680;</button>
+
 </div>
 
+<script>
+
+
+</script>
 
 </body>
 </html>
