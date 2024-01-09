@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button data-toggle-id="subscribe-mail">Show Subscription Form</button>
+
+<form id="subscribe-mail" hidden>
+  Your e-mail<input type="email"/>
+</form>
+
+<script>
+  document.addEventListener('click', (event) => {
+    let id= event.target.dataset.toggleId;
+    if(!id) return;
+
+    let elem = document.querySelector('#'+ id);
+    elem.hidden = !elem.hidden;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="cnt1">Counter</label>
+<input type="button" id="cnt1" value="1" data-counter>
+<label for="cnt2">Another Counter</label>
+<input type="button" id="cnt2" value="2" data-counter>
+
+<script>
+    document.addEventListener('click', (event) =>{
+        if (event.target.dataset.counter != undefined) {
+            event.target.value++;
+        }
+    });
+
+</script>
+</body>
+</html>
