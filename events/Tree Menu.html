@@ -12,35 +12,39 @@
             <div class="show-hide" data-level-1>
                 <li class="second-level">Mammals</li>
                     <div class="show-hide" data-level-2>
-                        <li class="second-level">Cows</li>
-                        <li class="second-level">Donkeys</li>
-                        <li class="second-level">Dogs</li>
-                        <li class="second-level">Tigers</li>
+                        <li class="third-level">Cows</li>
+                        <li class="third-level">Donkeys</li>
+                        <li class="third-level">Dogs</li>
+                        <li class="third-level">Tigers</li>
                     </div>
                 <li class="second-level">Other</li>
                     <div class="show-hide" data-level-2>
-                        <li class="second-level">Snakes</li>
-                        <li class="second-level">Birds</li>
-                        <li class="second-level">Lizards</li>
+                        <li class="third-level">Snakes</li>
+                        <li class="third-level">Birds</li>
+                        <li class="third-level">Lizards</li>
                     </div>
             </div>
 
         <li class="first-level clickable">Fishes</li>
             <div class="show-hide" data-level-1>
-                <li class="second-level">Aquarium</li>
+                <li class="second-level clickable">Aquarium</li>
                     <div class="show-hide" data-level-2>
-                        <li class="second-level">Guppy</li>
-                        <li class="second-level">Angelfish</li>
+                        <li class="third-level">Guppy</li>
+                        <li class="third-level">Angelfish</li>
                     </div>
-                <li class="second-level">Sea</li>
+                <li class="second-level clickable">Sea</li>
                     <div class="show-hide" data-level-2>
-                        <li class="second-level">Sea trout</li>
+                        <li class="third-level">Sea trout</li>
                     </div>
             </div>
     </ul>
 
     <script>
-
+        document.addEventListener('click', (event) =>{
+            if (event.target.classList.contains('clickable')) {
+                event.target.div.hidden = !event.target.div.hdden;
+            }
+        });
 
     </script>
 
