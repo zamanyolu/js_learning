@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .clickable:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="main" class="root">
@@ -40,7 +45,8 @@
     </ul>
 
     <script>
-        document.addEventListener('click', (event) =>{
+        d = document.querySelector('.root');
+        d.addEventListener('click', (event) =>{
             if (event.target.classList.contains('clickable')) {
                 ul = event.target.nextElementSibling;
 
