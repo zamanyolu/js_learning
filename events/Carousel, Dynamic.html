@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+        div.main {
+            left: 20%;
+            top: 20%;
+            right: 20%;
+            width: 60%;
+            position: absolute;
+            display: flex;
+            visibility: hidden;
+            align-items: center;
+            justify-content: center;
+            background-color: #c4df9b;
+            border-radius: 20px;
+        }
+
+
+        div.animate {
+            animation: fade-in 2.5s;
+            visibility: visible;
+
+            animation: slideIn 2.5s;
+            animation-duration: 1.4s;
+
+        }
+
+        @keyframes slideIn {
+            from {bottom: -300px; opacity: 0}
+            to {bottom: 0; opacity: 1}
+        }
+
+        @keyframes fade-in {
+            0% {
+                display: none;
+                opacity: 0;
+            }
+            100% {
+                display: flex;
+                opacity: 1;
+            }
+        }
+
+
+        div.carousel-window {
+            position: relative;
+            width: 390px;
+            overflow-x: hidden;
+            margin-left: 15px;
+            margin-right: 15px;
+            padding: 2px;
+            display: grid;
+        }
+
+        .arrow {
+            border-radius: 50%;
+            position: relative;
+            /*display: flex;*/
+            /*align-self: center;*/
+            /*margin-left: 5px;*/
+            /*margin-right: 5px;*/
+        }
+
+
+        /*.arrow.right {*/
+        /*    right: 5px;*/
+        /*}*/
+        /*.arrow.left {*/
+        /*    left: 5px;*/
+        /*}*/
+
+        .arrow:hover {
+            transition: transform .25s; /* Animation */
+            transform: scale(1.5);
+            border-color: #fad;
+            color: #fad;
+        }
+
+
+        ul {
+            display: flex;
+            /*width: 9999px;*/
+            /*margin-block-start: 0px;*/
+            position: relative;
+            padding-left: 0px;
+            block-size: border-box;
+            float: left;
+        }
+
+
+        li {
+            list-style-type: none;
+        }
+
+        img:hover {
+            transition: transform .25s; /* Animation */
+            transform: scale(1.1);
+        }
+
+        div.button-container {
+            width: 20px;
+            margin: 0px;
+            display: flex;
+            position: relative;
+            /*left:0px;*/
+            /*right:0px;*/
+            /*margin-left: 5px;*/
+            /*margin-right:5px;*/
+        }
+
+        .show {
+            margin-bottom: 50px;
+            width: 50px;
+            z-index: 1;
+        }
+
+        div.super {
+            z-index:1;
+            display:none;
+            visibility: visible;
+            position:fixed;
+            /*z-index:999;*/
+            width:100vw;
+            height:100vh;
+            background-color: white;
+            background-color:rgba(0,0,0,.25);
+
+
+        }
+
+        /*div.animate {*/
+        /*    animation-name: fadeIn;*/
+        /*    animation-duration: 0.4s*/
+        /*}*/
+
+
+        /*@keyframes slideIn {*/
+        /*    from {bottom: -300px; opacity: 0}*/
+        /*    to {bottom: 0; opacity: 1}*/
+        /*}*/
+
+        /*@keyframes fadeIn {*/
+        /*    from {opacity: 0}*/
+        /*    to {opacity: 1}*/
+        /*}*/
+
+        div.overlay {
+            display: block;
+            top: 0;
+            left: 0;
+
+            position: fixed;
+            z-index: 1;
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+    </style>
+</head>
+<body>
+    <input type="button" class="show" value="Show"></input>
+<div class="super">
+
+    <div class="main">
+        <div class="button-container">
+            <button class="arrow left">&#8678;</button>
+        </div>
+        <div class="carousel-window">
+            <ul>
+                <li><img src="https://en.js.cx/carousel/1.png"/></li>
+                <li><img src="https://en.js.cx/carousel/2.png"/></li>
+                <li><img src="https://en.js.cx/carousel/3.png"/></li>
+                <li><img src="https://en.js.cx/carousel/4.png"/></li>
+                <li><img src="https://en.js.cx/carousel/5.png"/></li>
+                <li><img src="https://en.js.cx/carousel/6.png"/></li>
+                <li><img src="https://en.js.cx/carousel/7.png"/></li>
+                <li><img src="https://en.js.cx/carousel/8.png"/></li>
+                <li><img src="https://en.js.cx/carousel/9.png"/></li>
+                <li><img src="https://en.js.cx/carousel/10.png"/></li>
+            </ul>
+        </div>
+        <div class="button-container">
+            <button class="arrow right">&#8680;</button>
+        </div>
+    </div>
+</div>
+<script>
+
+    function kaydir(event) {
+        let ul = document.querySelector('.carousel-window>ul');
+
+        if (this.classList.contains("left"))
+            ul.parentElement.scrollLeft += -390;
+        else
+            ul.parentElement.scrollLeft += 390;
+
+        showHideButtons()
+    }
+
+
+    function tekerlekle_kaydir(event) {
+
+        let d = document.querySelector('.carousel-window');
+        d.scrollLeft += 130 * Math.sign(event.deltaY);
+        showHideButtons()
+    }
+
+    function showHideButtons() {
+        let d = document.querySelector('.carousel-window');
+        let ul = document.querySelector('.carousel-window>ul');
+
+        btnRight = document.querySelector("button.arrow.right");
+        btnLeft = document.querySelector("button.arrow.left");
+
+        if (d.scrollLeft + d.offsetWidth >= ul.offsetWidth)
+            btnRight.setAttribute('hidden', "");
+        else
+            btnRight.removeAttribute('hidden');
+
+        if (d.scrollLeft <= 1)
+            btnLeft.setAttribute('hidden', "");
+        else
+            btnLeft.removeAttribute('hidden');
+    }
+
+    function show_hide(event) {
+
+        div = document.querySelector('.main');
+        but = document.querySelector('.show');
+
+
+        if (!event && !div.classList.contains('animate'))
+            return;
+
+        if (div.classList.contains('animate'))
+            but.value = 'Show';
+        else
+            but.value = 'Hide';
+
+        // div.top=100;
+        // div.left =100;
+        div.classList.toggle('animate');
+        // event.preventDefault();
+
+        div_sup = document.querySelector('.super');
+
+        div_sup.classList.toggle('overlay');
+
+        if (event)
+            event.stopPropagation();
+
+    }
+
+    document.documentElement.addEventListener('click', close);
+
+    let but = document.querySelectorAll('button.arrow');
+    for (b of but) {
+        b.addEventListener('click', kaydir);
+    }
+    let ul = document.querySelector('ul');
+    ul.addEventListener('wheel', tekerlekle_kaydir);
+
+    but = document.querySelector('.show');
+    but.addEventListener('click', show_hide);
+
+    function close(event) {
+        div = document.querySelector('.main');
+        pos = div.getBoundingClientRect();
+
+        if (event.clientX < pos.x || event.clientX > pos.x + div.offsetWidth ||
+            event.clientY < pos.y || event.clientY > pos.x + div.offsetHeight)
+            // div.classList.toggle('animate');
+            show_hide();
+    }
+
+
+</script>
+
+</body>
+</html>
