@@ -3,8 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+        .tooltip {
+            position: fixed;
+            padding: 10px 20px;
+            border: 1px solid #b3c9ce;
+            border-radius: 4px;
+            text-align: center;
+            font: italic 14px/1.3 sans-serif;
+            color: #333;
+            background: #fff;
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .3);
+            margin-top:5px;
+        }
+
+    </style>
+
 </head>
 <body>
 
+<input type="button" value="Show button" data-tooltip="this tooltip is longer than the element">
+<input type="button" value="Show button" data-tooltip="An</br>HTML tooltip">
+
+
+<script>
+    let div;
+    btns = document.querySelectorAll("[data-tooltip]");
+
+    for (let btn of btns) {
+        btn.addEventListener('mouseover', showTooltip)
+        btn.addEventListener('mouseout', removeToolTip);
+    }
+    function showTooltip(event) {
+        coords = event.target.getBoundingClientRect();
+
+        div = document.createElement('div');
+        div.className = 'tooltip';
+        div.innerHTML = this.dataset.tooltip;
+        document.body.append(div);
+        div.left= coords.left + (event.target.offsetWidth - div.offsetWidth) /2;
+
+        if (div.left < 0) div.left = 5;
+
+        div.top = coords.top - div.offsetHeight ;
+        if (div.top < 5) div.top =
+            coords.top + event.target.offsetHeight ;
+
+
+        div.style.top = div.top + "px";
+        div.style.left = div.left + "px";
+    }
+
+    function removeToolTip(event) {
+        div = document.querySelector('.tooltip');
+        div.remove();
+        div=null;
+    }
+
+
+
+</script>
 </body>
 </html>
