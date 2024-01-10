@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Right-click for the document menu</p>
+<button id="elem">Right-click for the button menu (fixed with event.stopPropagation)</button>
+
+<script>
+  elem.oncontextmenu = function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    alert("Button context menu");
+  };
+
+  document.oncontextmenu = function(event) {
+    event.preventDefault();
+    alert("Document context menu");
+  };
+</script>
+
+</body>
+</html>
