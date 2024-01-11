@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<pre id="rabbit">
+  |\   /|
+   \|_|/
+   /. .\
+  =\_Y_/=
+   {>o<}
+</pre>
+
+<button onclick="hide()">Hide()</button>
+<script>
+
+    function hide() {
+        let event = new CustomEvent("hide", {cancelable: true});
+
+        if (!rabbit.dispatchEvent(event)) {
+            alert("The action was prevented by a handler");
+        } else {
+            rabbit.hidden=true;
+        }
+    }
+
+    rabbit.addEventListener("hide", (event) => {
+        if (confirm("Call preventDefault?")) {
+            event.preventDefault();
+        }
+    });
+
+
+</script>
+</body>
+</html>

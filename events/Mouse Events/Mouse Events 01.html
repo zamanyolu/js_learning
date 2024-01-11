@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    textarea{
+      width: 300px;
+      height: 200px;
+      /*vertical-align: top;*/
+      rows:20;
+      cols:50;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="Click Me">
+
+<p>
+  <textarea> </textarea>
+</p>
+
+<script>
+  i = document.querySelector('input[type="button"]');
+  i.addEventListener('mousedown', write);
+  i.addEventListener('mouseup', write);
+  i.addEventListener('click', write);
+
+  function write(event) {
+    i = document.querySelector('textarea');
+
+    // i.value ="";
+    i.value += event.type + "\t";
+    i.value += event.button + "\n";
+    i.value += "Alt key:" + event.altKey + "\n";
+  }
+
+</script>
+</body>
+</html>

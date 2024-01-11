@@ -8,11 +8,11 @@
 <h1 id="elem"> Hello from script</h1>
 
 <script>
-  document.addEventListener('hello', function (event) {
-    alert('Hello from ' + event.target.tagName);
+  elem.addEventListener('hello', function (event) {
+      alert(event.detail.name);
   });
 
-  let event = new Event("hello", {bubbles:true});
+  let event = new CustomEvent("hello", {detail:{name:'Hakan'}});
   elem.dispatchEvent(event);
 
 </script>
