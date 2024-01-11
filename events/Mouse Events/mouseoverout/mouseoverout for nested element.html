@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #parent {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid lightgray;
+            display: flex;
+            /*display: block;*/
+            margin: 10px;
+        }
+
+        #child {
+            /*display: flex;*/
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border: 1px solid lightgray;
+            background-color: #aabbee;
+        }
+
+
+        #log {
+            height: 120px;
+            width: 350px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        span {
+            top: 5px;
+            left: 5px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="parent">
+    <span>parent</span>
+    <div id="child">
+        <span>child</span>
+
+    </div>
+</div>
+
+<textarea id="log">Events will show up here!
+</textarea>
+
+<!--<script src="script.js"></script>-->
+<script>
+    function handle(event) {
+        function str(s) {
+            if (!s) {
+                return null;
+            }
+
+            if()
+        }
+    }
+</script>
+
+</body>
+</html>
