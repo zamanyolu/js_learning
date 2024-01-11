@@ -3,59 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <style>
-    textarea{
-      width: 300px;
-      height: 200px;
-      /*vertical-align: top;*/
-      rows:20;
-      cols:50;
-    }
-  </style>
+    <style>
+        ul {
+
+        }
+
+        li {
+            cursor:pointer;
+        }
+
+        li.selected {
+            background-color: #11b0ee;
+        }
+
+
+    </style>
 </head>
 <body>
-<input type="button" value="Click Me">
 
-<p>
-  <textarea> </textarea>
-</p>
-
-<input onmousemove="this.value=event.clientX+':'+event.clientY" value="Mouse over me">
-</br>
-
-<span ondblclick="alert('dblclick')">Double-click me</span>
-</br>
-
-Before...
-<b ondblclick="alert('Click!')" onmousedown="return false">
-    Double-click me
-</b>
-...After
-</br>
-</br>
-<div oncopy="alert('Copying forbidden!');return false">
-    Dear user,
-    The copying is forbidden for you.
-    If you know JS or HTML, then you can get everything from the page source though.
-</div>
-
+<p>Bir liste</p>
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+</ul>
 
 
 <script>
-  i = document.querySelector('input[type="button"]');
-  i.addEventListener('mousedown', write);
-  i.addEventListener('mouseup', write);
-  i.addEventListener('click', write);
+    let ul = document.querySelector('ul');
+    ul.addEventListener('click', select);
+    function select(event) {
+        const ctrlPressed = event.ctrlKey;
+        const lis = ul.querySelectorAll('li');
 
-  function write(event) {
-    i = document.querySelector('textarea');
+        if (!ctrlPressed) {
+            for (let l of lis)
+                l.classList.remove('selected');
+        }
 
-    // i.value ="";
-    i.value += event.type + "\t";
-    i.value += event.button + "\n";
-    i.value += "Alt key:" + event.altKey + "\n";
-  }
+        li = event.target.closest('li');
+        if (li) {
+            li.classList.toggle('selected');
+        }
+
+    }
 
 </script>
+
 </body>
 </html>
