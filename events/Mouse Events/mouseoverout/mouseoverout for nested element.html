@@ -79,16 +79,17 @@
         else
             return false;
 
-        log.value += "\n" + event.type + "\ttarget=" + event.target.id + " " + nStr;
+        message = event.type + "\ttarget=" + event.target.id
+        log.value += "\n" + message + " " + nStr;
         // event.stopPropagation();
         log.scrollTop = log.scrollHeight;
         lastMessageTime = time;
-
         return false;
     }
 
     par = document.querySelector('#parent');
-    par.onmouseover = par.onmouseout = par.onmousemove= handle;
+    par.onmouseleave = par.onmouseenter = handle;  //par.onmousemove=
+    // par.onmouseover = par.onmouseout = par.onmousemove= handle;
     // parent.addEventListener('mousemove', handle);
     // parent.addEventListener('mouseover', handle);
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            display: block;
+            /*border:1px solid gray;*/
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+    </style>
+
+</head>
+<body style="height: 200px">
+
+<p>Drag the ball.</p>
+
+<img id="ball" src="https://js.cx/clipart/ball.svg" style="cursor:pointer" width="40" height="40" id="ball">
+
+
+<script>
+    let shiftX = null;
+    let shiftY = null;
+    function moveAt(pageX, pageY) {
+        ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
+        ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
+
+        // ball.style.left = pageX - shiftX + 'px';
+        // ball.style.top = pageY - shiftY + 'px';
+    }
+
+    function fare_hareket(event) {
+        if (event.target.id != "ball") return false;
+
+        // let shiftX = event.clientX - ball.getBoundingClientRect().left - ball.offsetWidth/2;
+        // let shiftY = event.clientY - ball.getBoundingClientRect().top - ball.offsetHeight/2;
+
+        ball.style.position = 'absolute';
+        ball.style.zIndex = 1000;
+        document.body.appendChild(ball);
+        document.addEventListener('mousemove', onMouseMove);
+    }
+
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
+
+    ball.ondragstart = function() {
+        return false;
+    };
+
+    function onMouseUp (event) {
+        document.removeEventListener('mousemove', onMouseMove);
+    }
+
+    ball.onmousedown = fare_hareket;
+    ball.onmouseup =onMouseUp;
+    // document.addEventListener('mousemove', onMouseMove);
+    // document.addEventListener('mousemove', onMouseMove);
+
+
+</script>
+
+
+</body>
+</html>
