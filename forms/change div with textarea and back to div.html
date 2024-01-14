@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+
+      #view {
+          width:300px;
+          height:200px;
+      }
+
+
+  </style>
+</head>
+
+
+<body>
+<p>Aşağıdaki div'e tıklanınca textarea'ya dönüşüyor ve enter'a basıncaya dek
+    yazma imkanı sağlıyor</p>
+</br>
+
+<div id="view" class="view">Text</div>
+
+
+<script>
+    let area = null;
+    let view =document.querySelector('#view');
+
+    view.onclick = function () {
+        editStart();
+    };
+
+    function editStart() {
+        area = document.createElement('textarea');
+        area.className = 'edit';
+        area.value = view.innerHTML;
+
+        area.onkeydown = function (event) {
+            if(event.key ==='Enter')
+                this.blur();
+        };
+
+        area.onblur = function () {
+            editEnd();
+        };
+
+        view.replaceWith(area);
+        area.focus();
+    }
+
+    function editEnd() {
+        view.innerHTML = area.value;
+        area.replaceWith(view);
+    }
+
+
+</script>
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
