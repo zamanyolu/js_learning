@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body>
+
+
+
+<select id="select">
+  <option value="apple">Apple</option>
+  <option value="pear">Pear</option>
+  <option value="banana">Banana</option>
+</select>
+
+<script>
+  // all three lines do the same thing
+  select.options[2].selected = true;
+  select.options[1].selected = true;
+  select.selectedIndex = 1;
+  select.value = 'banana';
+  // please note: options start from zero, so index 2 means the 3rd option.
+</script>
+
+
+<select id="mselect" multiple>
+  <option value="blues" selected>Blues</option>
+  <option value="rock" selected>Rock</option>
+  <option value="classic">Classic</option>
+</select>
+
+
+<script>
+  // get all selected values from multi-select
+  let selected = Array.from(mselect.options)
+          .filter(option => option.selected)
+          .map(option => option.value);
+
+  alert(selected); // blues,rock
+</script>
+
+
+
+</body>
+
+
+</html>
