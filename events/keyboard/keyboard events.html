@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            border-radius: 10px;
+        }
+
+        #log {
+            width: 400px;
+            height: 300px;
+        }
+
+        #textKey {
+            width: 400px;
+            height: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<form id="form" onsubmit="return false">
+
+    <div id="upper-part">
+        <fieldset>
+            <span>Prevent default for</span>
+            <input type="checkbox" id="keydownStop" value="1" name="keydownStop"/>
+            <label for="keydownStop">keyDown</label>
+            <input type="checkbox" id="keyupStop" value="1" name="keyupStop"/>
+            <label for="keyupStop">keyUp</label>
+            </br>
+
+            <span>Ignore:</span>
+            <input type="checkbox" id="keydownIgnore" value="1" name="keydownIgnore"/>
+            <label for="keydownIgnore">keyDown</label>
+            <input type="checkbox" id="keyupIgnore" value="1" name="keyupIgnore"/>
+            <label for="keyupIgnore">keyUp</label>
+            </br>
+        </fieldset>
+        <p>Focus on the input field and press a key.</p>
+    </div>
+
+    <div id="below-part">
+        <fieldset>
+            <p>
+                <input type="text" id="textKey"/>
+            </p>
+            <textarea id="log" readonly></textarea>
+
+        </fieldset>
+
+    </div>
+</form>
+<script>
+    let lastTime = Date.now();
+
+    function kur(event) {
+        if(event.target.id != "textKey") return;
+
+        if (form.elements[event.type + "Ignore"].checked) return;
+
+        log.scrollTop= 1e4;
+
+        let txt = event.type +
+            ' key=' + event.key +
+            ' code=' + event.code +
+        (event.shiftKey ? ' shiftKey' : '') +
+        (event.ctrlKey ? ' ctrlKey' : '') +
+        (event.altKey ? ' altKey' : '') +
+        (event.metaKey ? ' metaKey' : '') +
+        (event.repeat ? ' (repeat)' : '') +
+            "\n";
+
+        if (textKey.value && Date.now() - lastTime > 250) {
+            log.value += new Array(55).join('-') + '\n';
+        }
+        lastTime= Date.now();
+
+        log.value += txt;
+
+        if(form.elements[e.type + 'Stop'].checked)
+            event.preventDefault();
+
+    }
+
+    textKey.onkeydown = textKey.onkeyup = kur;
+
+</script>
+
+</body>
+</html>
