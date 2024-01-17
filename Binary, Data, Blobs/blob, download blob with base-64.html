@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- download attribute forces the browser to download instead of navigating -->
+
+<script>
+    let link = document.createElement('a');
+    link.download = 'hello.txt';
+
+    let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+
+    let reader = new FileReader();
+    reader.readAsDataURL(blob); // converts the blob to base64 and calls onload
+
+    reader.onload = function() {
+        link.href = reader.result; // data url
+        link.click();
+    };
+
+</script>
+
+
+</body>
+</html>
