@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #prompt-form {
+            display: inline-block;
+            padding: 5px 5px 5px 5px;
+            width:250px;
+            border: 1px solid black;
+            vertical-align: middle;
+            background-color: white;
+            text-align: center;
+            justify-content: center;
+        }
+
+        #prompt-form-container {
+            position: fixed;
+            top:0;
+            left:0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            z-index: 9999;
+            vertical-align: center;
+        }
+
+        #prompt-form-container:before {
+            display: inline-block;
+            height: 100%;
+            content: '';
+            vertical-align: middle;
+        }
+
+
+        .cover-div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9000;
+            width: 100%;
+            height: 100%;
+            background-color: gray;
+            opacity: 0.3;
+        }
+
+        #prompt-form input[name='text'] {
+            display: block;
+            /*text-align: center;*/
+            justify-content: center;
+            margin:auto;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<input type="button" id="show-button" value="Click for the Form"/>
+
+<div id="prompt-form-container">
+    <form id="prompt-form">
+        <div id="prompt-message"></div>
+        <input name="text" type="text">
+        <input type="submit" value="Ok"/>
+        <input type="button" name="cancel" value="Cancel">
+    </form>
+</div>
+
+<script>
+
+    function showCover() {
+        let coverDiv = document.createElement('div');
+        coverDiv.className = 'cover-div';
+
+        //make it unscrollable
+        document.body.style.overflowY = 'hidden';
+        document.body.append(coverDiv);
+    }
+
+    function hideCover() {
+        document.querySelector('.cover-div').remove();
+        document.body.style.overflowY = '';
+    }
+
+    function showPrompt(text, callback) {
+        showCover();
+        let form = document.querySelector('#prompt-form');
+        let container = document.querySelector('#prompt-form-container');
+        document.querySelector('#prompt-message').innerHTML = text;
+        form.text.value = '';
+
+        function complete(value) {
+            hideCover();
+            container.style.display = 'none';
+            document.onkeydown = null;
+            callback(value);
+        }
+
+        form.onsubmit = function () {
+            let value = form.text.value;
+            if(value ==="") return false;
+
+            complete(value);
+            return false;
+        };
+
+        form.cancel.onclick = function () {
+            complete(null);
+        };
+
+        container.style.display = 'block';
+        form.elements.text.focus();
+    }
+
+    document.querySelector('#show-button').onclick =
+        function () {
+            showPrompt("Enter something...", function (value) {
+                alert('You entered: ' + value);
+                }
+            );
+        };
+
+</script>
+
+
+</body>
+</html>

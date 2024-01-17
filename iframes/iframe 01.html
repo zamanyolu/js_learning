@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<iframe src="https://example.com" id="iframe">
+
+
+</iframe>
+
+
+<script>
+  iframe.onload =() =>{
+    let iframeWindow = iframe.contentWindow;
+    try {
+      let doc = iframe.contentDocument;
+    } catch (e){
+      alert(e); // security error (another origin)
+    }
+
+    try{
+      let href = iframe.contentWindow.location.href; // ERROR
+    }catch(e){
+      alert(e); //security error.
+    }
+
+    // ... we can write into location
+    iframe.contentWindow.location = '/'; // OK
+
+    iframe.onload = null; // clear handler after locaiton changed
+
+  }
+</script>
+
+</body>
+</html>

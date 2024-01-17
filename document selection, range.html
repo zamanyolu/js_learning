@@ -1,0 +1,17 @@
+<!doctype html>
+<body>
+<p id="p">Example: <i>italic</i> and <b>bold</b></p>
+
+<script>
+  let range = new Range();
+
+  range.setStart(p, 0);
+  range.setEnd(p, 2);
+
+  // toString of a range returns its content as text, without tags
+  console.log(range); // Example: italic
+
+  // apply this range for document selection (explained later below)
+  document.getSelection().addRange(range);
+</script>
+</body>
