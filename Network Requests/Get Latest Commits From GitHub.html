@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // (async ()=> {
+  //   let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+  //   let response = await fetch(url);
+  //   let commits = await response.json();
+  //   alert(commits[0].author.login);
+  // })();
+
+  // OR
+
+  (async ()=> {
+    fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+            .then(response => response.json())
+            .then(commits => alert(commits[0].author.login));
+  })();
+
+</script>
+</body>
+</html>
