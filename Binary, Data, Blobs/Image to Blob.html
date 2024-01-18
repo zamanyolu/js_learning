@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img src="data:image/png;base64,R0lGODlhDAAMAKIFAF5LAP/zxAAAANyuAP/gaP///wAAAAAAACH5BAEAAAUALAAAAAAMAAwAAAMlWLPcGjDKFYi9lxKBOaGcF35DhWHamZUW0K4mAbiwWtuf0uxFAgA7">
+
+
+
+<script>
+    let img = document.querySelector('img');
+
+    let canvas = document.createElement('canvas');
+    canvas.width = img.clientWidth;
+    canvas.height = img.clientHeight;
+
+    let context = canvas.getContext('2d');
+
+    context.drawImage(img,0,0);
+
+    canvas.toBlob(function(blob){
+        // blob ready, download it
+        let link = document.createElement('a');
+        link.download ='example.png';
+
+        link.href = URL.createObjectURL(blob);
+        link.click();
+
+        URL.revokeObjectURL(link.href);
+    }, 'image/png');
+
+
+
+</script>
+
+
+</body>
+</html>

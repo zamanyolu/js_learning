@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input  type="file" onchange="readFile(this)">
+
+
+
+<script>
+
+
+    function readFile(input){
+        let file= input.files[0];
+
+        let reader = new FileReader();
+        t = reader.readAsText(file);
+
+        reader.onload = function(){
+            console.log(reader.result);
+
+            d = document.createElement('div');
+            d.innerText = reader.result;
+            document.body.appendChild( d);
+
+        };
+
+        reader.onerror = function () {
+            console.log(reader.error);
+        };
+    }
+
+
+
+</script>
+
+
+</body>
+</html>
