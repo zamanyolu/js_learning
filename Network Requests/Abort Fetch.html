@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="margin:0">
+
+<script>
+   let controller = new AbortController();
+   setTimeout(()=>controller.abort(), 1000);
+
+   (async ()=>{
+       try {
+           let response = await fetch('/article/fetch-abort/demo/hang', {
+               signal: controller.signal
+           });
+       } catch (err){
+           if (err.name == 'AbortError') { // handle it here
+               alert('Aborted');
+           } else {
+               throw err;
+           }
+       }
+   })();
+
+</script>
+</body>
+</html>
