@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script type="text/javascript">
+
+        let count = 0;
+        let prev = performance.now();
+
+        requestAnimationFrame(function measure(time){
+          document.body.insertAdjacentHTML('beforeend',Math.floor(time - prev) + " ");
+          prev =time;
+
+          if(count++ <10) requestAnimationFrame(measure);
+        })
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -7,16 +7,25 @@
 <body style="margin:0">
 
 <script>
+
+    let url = new URL('https://google.com/search');
+    url.searchParams.set('q', 'test me!');
+
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET', '/article/xmlhttprequest/examle/load');
+    xhr.open('GET',url);
     xhr.send();
 
     xhr.onload = () => {
+        alert(getAllResponseHeaders());
         if(xhr.status != 200){
             alert(`Error ${xhr.status}: ${xhr.statusText}`);
         }else{
-            alert(`Done, got ${xhr.response.length} bytes`)
+            alert(`Done, got ${xhr.response.length} bytes`);
+
+            p = document.createElement('p');
+            p.innerText = xhr.responseText;
+            document.append(p);
         }
     };
 
@@ -28,8 +37,9 @@
         }
     };
 
-    xhr.onerror = ()=>{
+    xhr.onerror = (e)=>{
         alert("Request failed");
+        alert(e.getAllResponseHeaders());
     }
 
 </script>
